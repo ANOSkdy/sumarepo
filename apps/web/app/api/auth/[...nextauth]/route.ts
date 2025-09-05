@@ -1,6 +1,8 @@
 // apps/web/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import Airtable from "airtable";
+import argon2 from "argon2";
 
 const handler = NextAuth({
   providers: [
@@ -11,13 +13,37 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // ここにAirtableを使ったユーザー認証ロジックを後で追加します
-        if (credentials?.username === "user" && credentials?.password === "password") {
-          // 認証成功のダミーレスポンス
-          return { id: "1", name: "Test User", email: "test@example.com" };
+        const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID as string);
+
+        if (!credentials) {
+          return null;
         }
-        // 認証失敗
-        return null;
+
+        try {
+          const records = await base('Users').select({
+            filterByFormula: `{username} = '${credentials.username}'`,
+            maxRecords: 1
+          }).firstPage();
+
+          if (records.length === 0) {
+            return null;
+          }
+
+          const user = records[0];
+          const passwordHash = user.get('passwordHash') as string;
+
+          if (await argon2.verify(passwordHash, credentials.password)) {
+            return {
+              id: user.get('userId') as string,
+              name: user.get('name') as string,
+            };
+          } else {
+            return null;
+          }
+        } catch (error) {
+          console.error("Authentication error:", error);
+          return null;
+        }
       },
     }),
   ],

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { recordNfcStamp } from 'packages/api/src/nfcService';
+import { recordNfcStamp } from '@/packages/api/nfcService';
 import { z } from 'zod';
 
 const recordSchema = z.object({

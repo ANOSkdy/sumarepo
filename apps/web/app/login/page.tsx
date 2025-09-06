@@ -15,7 +15,6 @@ export default function LoginPage() {
     const result = await signIn("credentials", {
       redirect: false, // We handle redirect manually
 
-feat/implement-login-page
 "use client";
 
 import { useState } from 'react';

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useState } from "react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
@@ -33,6 +34,7 @@ const InfoLine: React.FC<InfoLineProps> = ({ icon, label, value }) => (
 )
 
 export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -69,14 +71,15 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
         throw new Error(errorData.message || "退勤に失敗しました。")
       }
 
-      // Success, reload the page to show the clock-in form
-      window.location.reload()
+      alert("記録しました")
+      router.refresh()
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message)
       } else {
         setError("不明なエラーが発生しました。")
       }
+      alert("エラーが発生しました")
     } finally {
       setIsSubmitting(false)
     }

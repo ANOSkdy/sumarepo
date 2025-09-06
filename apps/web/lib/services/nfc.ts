@@ -1,7 +1,5 @@
-import Airtable, { FieldSet, Record } from 'airtable';
-
-// Initialize Airtable
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID as string);
+import { FieldSet, Record } from 'airtable';
+import { base } from 'packages/shared/src/airtable';
 
 export interface NfcConfig {
   status: 'checked_in' | 'checked_out';

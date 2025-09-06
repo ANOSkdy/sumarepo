@@ -1,5 +1,12 @@
-﻿import { base } from '@sumarepo/shared'; // パッケージ名で指定します
-import type { NfcConfigResponse } from '@sumarepo/shared';
+﻿import Airtable, {
+  FieldSet,
+  Record as AirtableRecord,
+  Table
+} from 'airtable';
+import { base } from '@sumarepo/shared';
+// Note: The following types might be used by a getNfcConfig function if it exists in this file.
+// If not, they can be removed.
+import type { NfcConfigResponse, ClockedInState, ClockedOutState } from '@sumarepo/shared';
 
 /**
  * Finds the Airtable record ID for a given value in a specific field.
@@ -63,7 +70,7 @@ interface RecordNfcStampParams {
  * @param params The parameters for the NFC stamp.
  * @returns The newly created log record.
  */
-export async function recordNfcStamp(params: RecordNfcStampParams): Promise<Record<FieldSet>> {
+export async function recordNfcStamp(params: RecordNfcStampParams): Promise<AirtableRecord<FieldSet>> {
   const { userId, machineId, latitude, longitude, workDescription } = params;
 
   // 1. Find the nearest site
@@ -75,7 +82,7 @@ export async function recordNfcStamp(params: RecordNfcStampParams): Promise<Reco
     throw new Error('No active sites found in Airtable.');
   }
 
-  let nearestSite: Record<FieldSet> | null = null;
+  let nearestSite: AirtableRecord<FieldSet> | null = null;
   let minDistance = Infinity;
 
   activeSites.forEach(site => {
@@ -143,8 +150,3 @@ export async function recordNfcStamp(params: RecordNfcStampParams): Promise<Reco
 
   return newLog[0];
 }
-
-
-
-
-

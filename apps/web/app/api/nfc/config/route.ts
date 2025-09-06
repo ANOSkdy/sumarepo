@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
-import { getNfcConfig } from '@/lib/services/nfc';
+import { getNfcConfig } from '@sumarepo/api';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export async function GET(request: Request) {

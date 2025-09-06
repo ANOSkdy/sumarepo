@@ -19,6 +19,12 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.1.12)(react@19.1.0)
+      '@sumarepo/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@sumarepo/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       airtable:
         specifier: ^0.12.2
         version: 0.12.2
@@ -83,6 +89,10 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.2
+
+  packages/api: {}
+
+  packages/shared: {}
 
 packages:
 

@@ -1,8 +1,7 @@
 ﻿import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
-import { getNfcConfig } from '@sumarepo/api';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-
+import { getNfcConfig } from '@sumarepo/api';
 export async function GET(request: Request) {
   try {
     const session = await getServerSession(authOptions);

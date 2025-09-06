@@ -1,8 +1,8 @@
 ﻿import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { recordNfcStamp } from '@sumarepo/api';
 import { z } from 'zod';
+import { recordNfcStamp } from '@sumarepo/api';
 
 const recordSchema = z.object({
   machineId: z.string(),

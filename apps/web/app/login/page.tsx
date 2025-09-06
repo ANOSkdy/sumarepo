@@ -40,12 +40,12 @@ export default function LoginPage() {
           <CardHeader>
             <CardTitle className="text-2xl">ログイン</CardTitle>
             <CardDescription>
-              IDとパスワードを入力してログインしてください、E
+              IDとパスワードを入力してログインしてください。
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="username">ユーザー吁E/Label>
+<Label htmlFor="username">ユーザー名</Label>
               <Input
                 id="username"
                 type="text"
@@ -55,7 +55,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">パスワーチE/Label>
+              <Label htmlFor="password">パスワード</Label>
               <Input
                 id="password"
                 type="password"

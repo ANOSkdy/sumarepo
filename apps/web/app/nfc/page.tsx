@@ -34,7 +34,7 @@ export default async function NfcPage({ searchParams }: NfcPageProps) {
       <main className="flex min-h-screen flex-col items-center justify-center bg-base p-4">
         <div className="text-red-500">
           <h1 className="text-2xl font-bold">エラー</h1>
-          <p>machineidが指定されてぁE��せん、E/p>
+<p>machineidが指定されていません。</p>
         </div>
       </main>
     )
@@ -57,7 +57,7 @@ export default async function NfcPage({ searchParams }: NfcPageProps) {
       <main className="flex min-h-screen flex-col items-center justify-center bg-base p-4">
         <div className="text-red-500">
           <h1 className="text-2xl font-bold">エラー</h1>
-          <p>チE�Eタの取得に失敗しました。�Eージを�E読み込みしてください、E/p>
+          <p>データの取得に失敗しました。ページを再読み込みしてください。</p>
         </div>
       </main>
     )

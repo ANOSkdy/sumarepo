@@ -4,7 +4,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import Airtable from "airtable";
 import argon2 from "argon2";
 
-const handler = NextAuth({
+import type { NextAuthOptions } from "next-auth";
+
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -49,7 +51,17 @@ const handler = NextAuth({
   ],
   pages: {
     signIn: '/login', // ログインページのパス
+  },
+  callbacks: {
+    session({ session, token }) {
+      if (session.user && token.sub) {
+        session.user.id = token.sub;
+      }
+      return session;
+    },
   }
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

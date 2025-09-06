@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,6 +20,7 @@ interface ClockInFormProps {
 }
 
 export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
+  const router = useRouter()
   const [selectedWork, setSelectedWork] = useState<string>("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -61,14 +63,15 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
         throw new Error(errorData.message || "打刻に失敗しました。")
       }
 
-      // Success, reload the page to show the clock-out view
-      window.location.reload()
+      alert("記録しました")
+      router.refresh()
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message)
       } else {
         setError("不明なエラーが発生しました。")
       }
+      alert("エラーが発生しました")
     } finally {
       setIsSubmitting(false)
     }

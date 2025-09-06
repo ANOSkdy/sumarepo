@@ -44,7 +44,11 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
 
     const getLocation = (): Promise<GeolocationPosition> => {
       return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject)
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        })
       })
     }
 
@@ -68,18 +72,15 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || "騾蜍､縺ｫ螟ｱ謨励＠縺ｾ縺励◆縲・)
+        throw new Error(errorData.message || "送信に失敗しました。")
       }
 
-      alert("險倬鹸縺励∪縺励◆")
+      alert("記録しました")
       router.refresh()
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message)
-      } else {
-        setError("荳肴・縺ｪ繧ｨ繝ｩ繝ｼ縺檎匱逕溘＠縺ｾ縺励◆縲・)
-      }
-      alert("繧ｨ繝ｩ繝ｼ縺檎匱逕溘＠縺ｾ縺励◆")
+      const errorMessage = err instanceof Error ? err.message : "不明なエラーが発生しました。";
+      setError(errorMessage)
+      alert(`エラーが発生しました: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -88,28 +89,24 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
   return (
     <Card className="w-full max-w-md shadow-lg">
       <CardHeader>
-        <CardTitle className="text-center text-2xl">騾蜍､謇灘綾</CardTitle>
+        <CardTitle className="text-center text-2xl">退勤記録</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <InfoLine icon="/user.svg" label="繝ｦ繝ｼ繧ｶ繝ｼ蜷・ value={clockInInfo.userName} />
-          <InfoLine icon="/map-pin.svg" label="迴ｾ蝣ｴ蜷・ value={clockInInfo.siteName} />
-          <InfoLine icon="/truck.svg" label="讖滓｢ｰ蜷・ value={clockInInfo.machineName} />
-          <InfoLine icon="/clipboard-list.svg" label="菴懈･ｭ蜀・ｮｹ" value={clockInInfo.workDescription} />
+          <InfoLine icon="/user.svg" label="ユーザー名" value={clockInInfo.userName} />
+          <InfoLine icon="/map-pin.svg" label="現場名" value={clockInInfo.siteName} />
+          <InfoLine icon="/truck.svg" label="機械名" value={clockInInfo.machineName} />
+          <InfoLine icon="/clipboard-list.svg" label="作業内容" value={clockInInfo.workDescription} />
         </div>
         <Button
           onClick={handleClockOut}
           disabled={isSubmitting}
           className="w-full bg-accent-2 text-white hover:bg-accent-2/90"
         >
-          {isSubmitting ? "騾蜍､荳ｭ..." : "騾蜍､縺吶ｋ"}
+          {isSubmitting ? "記録中..." : "退勤する"}
         </Button>
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
       </CardContent>
     </Card>
   )
 }
-
-
-
-

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 export default function Home() {
   return (
@@ -95,9 +95,12 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Go to nextjs.org ↁE        </a>
+          Go to nextjs.org 竊・        </a>
       </footer>
     </div>
   );
 }
+
+
+
 

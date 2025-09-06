@@ -1,4 +1,4 @@
-import { FieldSet, Record } from 'airtable';
+﻿import { FieldSet, Record } from 'airtable';
 import { base } from 'packages/shared/src/airtable';
 
 export interface NfcConfig {
@@ -62,4 +62,7 @@ export async function getNfcConfig(userId: string): Promise<NfcConfig> {
     throw new Error('Could not retrieve NFC configuration.');
   }
 }
+
+
+
 

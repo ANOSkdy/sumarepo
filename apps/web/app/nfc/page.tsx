@@ -1,4 +1,4 @@
-import { ClockInForm } from "@/components/nfc/ClockInForm"
+﻿import { ClockInForm } from "@/components/nfc/ClockInForm"
 import { ClockOutView } from "@/components/nfc/ClockOutView"
 import { headers } from "next/headers"
 
@@ -33,8 +33,8 @@ export default async function NfcPage({ searchParams }: NfcPageProps) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center bg-base p-4">
         <div className="text-red-500">
-          <h1 className="text-2xl font-bold">エラー</h1>
-<p>machineidが指定されていません。</p>
+          <h1 className="text-2xl font-bold">繧ｨ繝ｩ繝ｼ</h1>
+<p>machineid縺梧欠螳壹＆繧後※縺・∪縺帙ｓ縲・/p>
         </div>
       </main>
     )
@@ -56,11 +56,14 @@ export default async function NfcPage({ searchParams }: NfcPageProps) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center bg-base p-4">
         <div className="text-red-500">
-          <h1 className="text-2xl font-bold">エラー</h1>
-          <p>データの取得に失敗しました。ページを再読み込みしてください。</p>
+          <h1 className="text-2xl font-bold">繧ｨ繝ｩ繝ｼ</h1>
+          <p>繝・・繧ｿ縺ｮ蜿門ｾ励↓螟ｱ謨励＠縺ｾ縺励◆縲ゅ・繝ｼ繧ｸ繧貞・隱ｭ縺ｿ霎ｼ縺ｿ縺励※縺上□縺輔＞縲・/p>
         </div>
       </main>
     )
   }
 }
+
+
+
 

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { getNfcConfig } from '@sumarepo/api';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
@@ -29,4 +29,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ message: 'Internal Server Error', error: errorMessage }, { status: 500 });
   }
 }
+
+
+
 

@@ -1,5 +1,3 @@
-﻿// apps/web/app/login/page.tsx 縺ｫ縺難ｿｽE繧ｳ繝ｼ繝峨ｒ雋ｼ繧贋ｻ倥￠縺ｦ縺上□縺輔＞
-
 'use client';
 
 import { useState } from 'react';
@@ -21,15 +19,15 @@ export default function LoginPage() {
     const result = await signIn('credentials', {
       username,
       password,
-      redirect: false, // 繝ｪ繝繧､繝ｬ繧ｯ繝茨ｿｽE謇句虚縺ｧ蛻ｶ蠕｡縺励∪縺・
+      redirect: false, // リダイレクトは手動で制御します
     });
 
     if (result?.ok) {
-      // 謌仙粥縺励◆繧峨ム繝・・ｽ・ｽ繝･繝懶ｿｽE繝峨∈
+      // 成功したらダッシュボードへ
       router.push('/dashboard');
     } else {
-      // 螟ｱ謨励＠縺溘ｉ繧｢繝ｩ繝ｼ繝医ｒ陦ｨ遉ｺ
-      alert('ID縺ｾ縺滂ｿｽE繝代せ繝ｯ繝ｼ繝峨′豁｣縺励￥縺ゅｊ縺ｾ縺帙ｓ');
+      // 失敗したらアラートを表示
+      alert('IDまたはパスワードが正しくありません');
     }
   };
 
@@ -38,14 +36,14 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit}>
         <Card className="w-full max-w-sm">
           <CardHeader>
-            <CardTitle className="text-2xl">繝ｭ繧ｰ繧､繝ｳ</CardTitle>
+            <CardTitle className="text-2xl">ログイン</CardTitle>
             <CardDescription>
-              ID縺ｨ繝代せ繝ｯ繝ｼ繝峨ｒ蜈･蜉帙＠縺ｦ繝ｭ繧ｰ繧､繝ｳ縺励※縺上□縺輔＞縲・
+              IDとパスワードを入力してログインしてください。
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-<Label htmlFor="username">繝ｦ繝ｼ繧ｶ繝ｼ蜷・/Label>
+              <Label htmlFor="username">ユーザー名</Label>
               <Input
                 id="username"
                 type="text"
@@ -55,7 +53,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">繝代せ繝ｯ繝ｼ繝・/Label>
+              <Label htmlFor="password">パスワード</Label>
               <Input
                 id="password"
                 type="password"
@@ -67,7 +65,7 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter>
             <Button className="w-full" type="submit">
-              繝ｭ繧ｰ繧､繝ｳ
+              ログイン
             </Button>
           </CardFooter>
         </Card>
@@ -75,6 +73,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-
-

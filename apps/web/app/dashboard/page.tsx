@@ -7,10 +7,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>繧医≧縺薙◎縲＋session?.user?.name ?? "繧ｲ繧ｹ繝・}縺輔ｓ</h1>
-<button onClick={() => signOut({ callbackUrl: '/' })}>繝ｭ繧ｰ繧｢繧ｦ繝・/button>
+      <h1>ようこそ、{session?.user?.name ?? "ゲスト"}さん</h1>
+      <button onClick={() => signOut({ callbackUrl: '/' })}>ログアウト</button>
     </div>
   );
 }
-
-

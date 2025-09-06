@@ -1,9 +1,8 @@
-﻿import type { NextConfig } from "next";
+﻿// apps/web/next.config.js
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  transpilePackages: ['@sumarepo/api', '@sumarepo/shared'],
 };
 
-export default nextConfig;
-
-
+module.exports = nextConfig;

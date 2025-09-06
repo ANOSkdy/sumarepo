@@ -1,0 +1,24 @@
+// sumarepo/tsconfig.json （新規作成）
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noEmit": true,
+    "paths": {
+      "@sumarepo/api": ["./packages/api/src"],
+      "@sumarepo/api/*": ["./packages/api/src/*"],
+      "@sumarepo/shared": ["./packages/shared/src"],
+      "@sumarepo/shared/*": ["./packages/shared/src/*"]
+    }
+  }
+}

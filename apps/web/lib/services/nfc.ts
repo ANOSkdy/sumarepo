@@ -62,3 +62,4 @@ export async function getNfcConfig(userId: string): Promise<NfcConfig> {
     throw new Error('Could not retrieve NFC configuration.');
   }
 }
+

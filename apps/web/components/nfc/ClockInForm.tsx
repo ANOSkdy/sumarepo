@@ -27,7 +27,7 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
 
   const handleClockIn = async () => {
     if (!selectedWork) {
-      setError("作業内容を選択してください。")
+      setError("作業冁E��を選択してください、E)
       return
     }
     setIsSubmitting(true)
@@ -60,7 +60,7 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || "打刻に失敗しました。")
+        throw new Error(errorData.message || "打刻に失敗しました、E)
       }
 
       alert("記録しました")
@@ -69,7 +69,7 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
       if (err instanceof Error) {
         setError(err.message)
       } else {
-        setError("不明なエラーが発生しました。")
+        setError("不�Eなエラーが発生しました、E)
       }
       alert("エラーが発生しました")
     } finally {
@@ -84,10 +84,10 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="work-select">作業内容</Label>
+          <Label htmlFor="work-select">作業冁E��</Label>
           <Select onValueChange={setSelectedWork} value={selectedWork}>
             <SelectTrigger id="work-select">
-              <SelectValue placeholder="作業内容を選択..." />
+              <SelectValue placeholder="作業冁E��を選抁E.." />
             </SelectTrigger>
             <SelectContent>
               {workOptions.map((option) => (
@@ -110,3 +110,4 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
     </Card>
   )
 }
+

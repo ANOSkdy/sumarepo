@@ -68,7 +68,7 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || "退勤に失敗しました。")
+        throw new Error(errorData.message || "退勤に失敗しました、E)
       }
 
       alert("記録しました")
@@ -77,7 +77,7 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
       if (err instanceof Error) {
         setError(err.message)
       } else {
-        setError("不明なエラーが発生しました。")
+        setError("不�Eなエラーが発生しました、E)
       }
       alert("エラーが発生しました")
     } finally {
@@ -92,10 +92,10 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <InfoLine icon="/user.svg" label="ユーザー名" value={clockInInfo.userName} />
-          <InfoLine icon="/map-pin.svg" label="現場名" value={clockInInfo.siteName} />
-          <InfoLine icon="/truck.svg" label="機械名" value={clockInInfo.machineName} />
-          <InfoLine icon="/clipboard-list.svg" label="作業内容" value={clockInInfo.workDescription} />
+          <InfoLine icon="/user.svg" label="ユーザー吁E value={clockInInfo.userName} />
+          <InfoLine icon="/map-pin.svg" label="現場吁E value={clockInInfo.siteName} />
+          <InfoLine icon="/truck.svg" label="機械吁E value={clockInInfo.machineName} />
+          <InfoLine icon="/clipboard-list.svg" label="作業冁E��" value={clockInInfo.workDescription} />
         </div>
         <Button
           onClick={handleClockOut}
@@ -109,3 +109,4 @@ export function ClockOutView({ machineid, clockInInfo }: ClockOutViewProps) {
     </Card>
   )
 }
+

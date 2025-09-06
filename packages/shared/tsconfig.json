@@ -1,0 +1,4 @@
+// packages/shared/tsconfig.json （新規作成）
+{
+  "extends": "../../tsconfig.json"
+}

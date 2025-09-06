@@ -1,4 +1,4 @@
-// apps/web/app/login/page.tsx にこのコードを貼り付けてください
+// apps/web/app/login/page.tsx にこ�Eコードを貼り付けてください
 
 'use client';
 
@@ -21,15 +21,15 @@ export default function LoginPage() {
     const result = await signIn('credentials', {
       username,
       password,
-      redirect: false, // リダイレクトは手動で制御します
+      redirect: false, // リダイレクト�E手動で制御しまぁE
     });
 
     if (result?.ok) {
-      // 成功したらダッシュボードへ
+      // 成功したらダチE��ュボ�Eドへ
       router.push('/dashboard');
     } else {
       // 失敗したらアラートを表示
-      alert('IDまたはパスワードが正しくありません');
+      alert('IDまた�Eパスワードが正しくありません');
     }
   };
 
@@ -40,12 +40,12 @@ export default function LoginPage() {
           <CardHeader>
             <CardTitle className="text-2xl">ログイン</CardTitle>
             <CardDescription>
-              IDとパスワードを入力してログインしてください。
+              IDとパスワードを入力してログインしてください、E
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="username">ユーザー名</Label>
+              <Label htmlFor="username">ユーザー吁E/Label>
               <Input
                 id="username"
                 type="text"
@@ -55,7 +55,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">パスワード</Label>
+              <Label htmlFor="password">パスワーチE/Label>
               <Input
                 id="password"
                 type="password"

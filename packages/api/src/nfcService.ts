@@ -1,5 +1,5 @@
-﻿import { base } from 'packages/shared/src/airtable';
-import { FieldSet, Record } from 'airtable';
+﻿import { base } from '@sumarepo/shared'; // パッケージ名で指定します
+import type { NfcConfigResponse } from '@sumarepo/shared';
 
 /**
  * Finds the Airtable record ID for a given value in a specific field.

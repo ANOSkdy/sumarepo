@@ -1,4 +1,4 @@
-﻿import Airtable from 'airtable';
+import Airtable from 'airtable';
 
 // Initialize Airtable
 const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY });

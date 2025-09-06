@@ -1,5 +1,5 @@
-﻿import { base } from 'packages/shared/src/airtable';
-import { FieldSet, Record } from 'airtable';
+import { base } from '@sumarepo/shared';
+import { FieldSet, Record as AirtableRecord } from 'airtable';
 
 /**
  * Finds the Airtable record ID for a given value in a specific field.
@@ -63,7 +63,7 @@ interface RecordNfcStampParams {
  * @param params The parameters for the NFC stamp.
  * @returns The newly created log record.
  */
-export async function recordNfcStamp(params: RecordNfcStampParams): Promise<Record<FieldSet>> {
+export async function recordNfcStamp(params: RecordNfcStampParams): Promise<AirtableRecord<FieldSet>> {
   const { userId, machineId, latitude, longitude, workDescription } = params;
 
   // 1. Find the nearest site
@@ -75,10 +75,10 @@ export async function recordNfcStamp(params: RecordNfcStampParams): Promise<Reco
     throw new Error('No active sites found in Airtable.');
   }
 
-  let nearestSite: Record<FieldSet> | null = null;
+  let nearestSite: AirtableRecord<FieldSet> | null = null;
   let minDistance = Infinity;
 
-  activeSites.forEach(site => {
+  activeSites.forEach((site: AirtableRecord<FieldSet>) => {
     const siteLat = site.get('lat') as number;
     const siteLon = site.get('lon') as number;
     const distance = calculateDistance(latitude, longitude, siteLat, siteLon);
@@ -143,8 +143,3 @@ export async function recordNfcStamp(params: RecordNfcStampParams): Promise<Reco
 
   return newLog[0];
 }
-
-
-
-
-

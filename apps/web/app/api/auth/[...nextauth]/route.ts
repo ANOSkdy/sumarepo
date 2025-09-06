@@ -1,4 +1,4 @@
-﻿// apps/web/app/api/auth/[...nextauth]/route.ts
+// apps/web/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import Airtable from "airtable";
@@ -50,7 +50,7 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: '/login', // 繝ｭ繧ｰ繧､繝ｳ繝壹・繧ｸ縺ｮ繝代せ
+    signIn: '/login', // ログインページのパス
   },
   callbacks: {
     session({ session, token }) {

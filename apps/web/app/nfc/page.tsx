@@ -1,4 +1,4 @@
-﻿import { ClockInForm } from "@/components/nfc/ClockInForm"
+import { ClockInForm } from "@/components/nfc/ClockInForm"
 import { ClockOutView } from "@/components/nfc/ClockOutView"
 import { headers } from "next/headers"
 

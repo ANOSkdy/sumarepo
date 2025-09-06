@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import { useState } from "react"
@@ -27,7 +27,7 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
 
   const handleClockIn = async () => {
     if (!selectedWork) {
-      setError("菴懈･ｭ蜀・ｮｹ繧帝∈謚槭＠縺ｦ縺上□縺輔＞縲・)
+      setError("作業内容を選択してください。")
       return
     }
     setIsSubmitting(true)
@@ -60,18 +60,18 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || "謇灘綾縺ｫ螟ｱ謨励＠縺ｾ縺励◆縲・)
+        throw new Error(errorData.message || "記録に失敗しました。")
       }
 
-      alert("險倬鹸縺励∪縺励◆")
+      alert("記録しました")
       router.refresh()
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message)
       } else {
-        setError("荳肴・縺ｪ繧ｨ繝ｩ繝ｼ縺檎匱逕溘＠縺ｾ縺励◆縲・)
+        setError("予期せぬエラーが発生しました。")
       }
-      alert("繧ｨ繝ｩ繝ｼ縺檎匱逕溘＠縺ｾ縺励◆")
+      alert("エラーが発生しました")
     } finally {
       setIsSubmitting(false)
     }
@@ -80,14 +80,14 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
   return (
     <Card className="w-full max-w-md shadow-lg">
       <CardHeader>
-        <CardTitle className="text-center text-2xl">蜃ｺ蜍､謇灘綾</CardTitle>
+        <CardTitle className="text-center text-2xl">出勤記録</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="work-select">菴懈･ｭ蜀・ｮｹ</Label>
+          <Label htmlFor="work-select">作業内容</Label>
           <Select onValueChange={setSelectedWork} value={selectedWork}>
             <SelectTrigger id="work-select">
-              <SelectValue placeholder="菴懈･ｭ蜀・ｮｹ繧帝∈謚・.." />
+              <SelectValue placeholder="作業内容を選択..." />
             </SelectTrigger>
             <SelectContent>
               {workOptions.map((option) => (
@@ -103,7 +103,7 @@ export function ClockInForm({ machineid, workOptions }: ClockInFormProps) {
           disabled={isSubmitting || !selectedWork}
           className="w-full bg-primary text-white hover:bg-primary/90 transition-transform duration-150 hover:scale-[1.02]"
         >
-          {isSubmitting ? "謇灘綾荳ｭ..." : "蜃ｺ蜍､繧定ｨ倬鹸縺吶ｋ"}
+          {isSubmitting ? "記録中..." : "出勤を記録する"}
         </Button>
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
       </CardContent>

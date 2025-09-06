@@ -1,13 +1,18 @@
-// apps/web/tsconfig.json （内容を置き換え）
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "allowJs": true,
+    "noEmit": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "../../packages/api" },
+    { "path": "../../packages/shared" }
+  ]
 }

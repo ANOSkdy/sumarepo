@@ -1,4 +1,4 @@
-// apps/web/app/login/page.tsx にこ�Eコードを貼り付けてください
+// apps/web/app/login/page.tsx にこ�Eコードを貼り付けてください
 
 'use client';
 
@@ -21,15 +21,15 @@ export default function LoginPage() {
     const result = await signIn('credentials', {
       username,
       password,
-      redirect: false, // リダイレクト�E手動で制御しまぁE
+      redirect: false, // リダイレクト�E手動で制御しまぁE
     });
 
     if (result?.ok) {
-      // 成功したらダチE��ュボ�Eドへ
+      // 成功したらダチE��ュボ�Eドへ
       router.push('/dashboard');
     } else {
       // 失敗したらアラートを表示
-      alert('IDまた�Eパスワードが正しくありません');
+      alert('IDまた�Eパスワードが正しくありません');
     }
   };
 
